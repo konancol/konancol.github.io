@@ -1,0 +1,649 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>Readme</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='readme'><span>Readme</span></h1><h2 id='overview'><span>Overview</span></h2><p><strong><span>Minecraft VS Zombies 2</span></strong><span> (MVZ2 for short) is a fan game of Minecraft, Plants vs. Zombies, and Touhou Project series, created by Cuerzor alone.</span></p><p><span>The game also features the Plants vs. Zombies game playing, elements of Minecraft, and places and characters from Touhou Project series, in which players take on the role of Steve the mechanic as he travels with his friend Crazy Villager to Gensokyo to solve the Minecraft Incident.</span></p><p><span>There are two versions of the game. The previous version made with Gamemaker Studio 2 was updated to chapter 4 and is now obsoleted. The current Unity version are in development, is expected to have around 112 contraptions, 64 enemies and 132 adventure levels.</span></p><p><span>For the latest news about the game, please pay attention to the creator Cuerzor&#39;s online news, as well as the game&#39;s change log.</span></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" href="#readme">Readme</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n2"><a class="md-toc-inner" href="#overview">Overview</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n9"><a class="md-toc-inner" href="#game-contents">Game Contents</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n10"><a class="md-toc-inner" href="#me">ME</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n14"><a class="md-toc-inner" href="#contraptions">Contraptions</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n29"><a class="md-toc-inner" href="#enemies">Enemies</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n42"><a class="md-toc-inner" href="#gems">Gems</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n53"><a class="md-toc-inner" href="#battlefields">Battlefields</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n56"><a class="md-toc-inner" href="#starshards">Starshards</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n61"><a class="md-toc-inner" href="#almanac">Almanac</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n64"><a class="md-toc-inner" href="#bosses">Bosses</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n67"><a class="md-toc-inner" href="#difficulties">Difficulties</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n79"><a class="md-toc-inner" href="#faq">FAQ</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n111"><a class="md-toc-inner" href="#difficulty-differences">Difficulty Differences</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n112"><a class="md-toc-inner" href="#easy">Easy</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n152"><a class="md-toc-inner" href="#hard">Hard</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n188"><a class="md-toc-inner" href="#license">License</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n193"><a class="md-toc-inner" href="#credits">Credits</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n205"><a class="md-toc-inner" href="#upcoming-features">Upcoming Features</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n207"><a class="md-toc-inner" href="#change-log">Change Log</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n208"><a class="md-toc-inner" href="#025">0.2.5</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n214"><a class="md-toc-inner" href="#024">0.2.4</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n228"><a class="md-toc-inner" href="#023">0.2.3</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n250"><a class="md-toc-inner" href="#022">0.2.2</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n274"><a class="md-toc-inner" href="#021">0.2.1</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n291"><a class="md-toc-inner" href="#020">0.2.0</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n336"><a class="md-toc-inner" href="#012">0.1.2</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n347"><a class="md-toc-inner" href="#011">0.1.1</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n391"><a class="md-toc-inner" href="#010">0.1.0</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n435"><a class="md-toc-inner" href="#004">0.0.4</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n453"><a class="md-toc-inner" href="#003">0.0.3</a></span></p></div><hr /><h2 id='game-contents'><span>Game Contents</span></h2><h3 id='me'><span>ME</span></h3><p><strong><span>ME</span></strong><span>(Mechanical Energy) is a resource that must be used to place the contraptions, corresponding to </span><strong><span>Sun</span></strong><span> in Plants vs. Zombies.</span></p><p><span>If you have no ME, you cannot battle with enemies. Additional ME can be obtained by collecting redstones, or by using ME production contraptions.</span></p><p><span>You can only have at most 9,990 ME at a time.</span></p><h3 id='contraptions'><span>Contraptions</span></h3><p><strong><span>Contraptions</span></strong><span> are the tools you use to attack your enemies, corresponding to </span><strong><span>Plants</span></strong><span> in Plants vs. Zombies.</span></p><p><span>There are many different kinds of contraptions, such as: </span></p><ul><li><strong><span>Dispenser</span></strong><span> for attacking enemies.</span></li><li><strong><span>Furnace</span></strong><span> for producing redstone.</span></li><li><strong><span>Obsidian</span></strong><span> for blocking enemies.</span></li><li><strong><span>Mine TNT</span></strong><span> for blowing up enemies. </span></li><li><span>So on.</span></li></ul><p><span>The specified ME must be spent to place contraptions. After you place a contraption, you must wait a certain amount of recharging time before you can place the contraption again. The recharging time is different for each device.</span></p><h3 id='enemies'><span>Enemies</span></h3><p><strong><span>Enemies</span></strong><span> are what you need to defeat, corresponding to </span><strong><span>Zombies</span></strong><span> Plants vs. Zombies.</span></p><p><span>There are various kinds of enemies, such as:</span></p><ul><li><strong><span>Zombie</span></strong><span> which is the most common.</span></li><li><strong><span>Iron Helmet Zombie</span></strong><span> which is tougher.</span></li><li><strong><span>Skeleton</span></strong><span> which shoots arrows to your contraptions.</span></li><li><span>So on.</span></li></ul><p><span>The core of the game is how to defeat enemies intelligently with the contraptions.</span></p><h3 id='gems'><span>Gems</span></h3><p><strong><span>Gems</span></strong><span> are collectable objects that corresponding to </span><strong><span>Coins</span></strong><span> in Plants vs. Zombies.</span></p><p><span>There are three types of gems: </span></p><ul><li><strong><span>Emeralds</span></strong><span> worth 10.</span></li><li><strong><span>Rubies</span></strong><span> worth 50.</span></li><li><strong><span>Diamonds</span></strong><span> worth 1000.</span></li></ul><p><span>After you have collected enough gems, you can buy and unlock items from events or the store to increase your power.</span></p><h3 id='battlefields'><span>Battlefields</span></h3><p><strong><span>Battlefields</span></strong><span> are sites for battling. Different battlefields have different effects.</span></p><p><span>For example: </span>
+<strong><span>Halloween</span></strong><span> is at night time, so you can&#39;t get additional redstones from the solar mine, and will summon two gargoyle statues then disrupt your formation at each huge wave of enemies.</span></p><h3 id='starshards'><span>Starshards</span></h3><p><strong><span>Starshards</span></strong><span> are powerful resources, corresponding to </span><strong><span>Plant Foods</span></strong><span> in Plants vs. Zombies 2.</span></p><p><span>After you defeat an enemy that emits green light, it will drop a starshard. Or you can get additional starshards by starshard producing contraptions.</span></p><p><span>When using the starshard on a contraption, the contraption is </span><strong><span>evoked</span></strong><span> by the starshard and erupts with a power enough to change the outcome of the battle.</span></p><p><span>Different contraptions have different </span><strong><span>evoked abilities</span></strong><span>, and using starshards wisely can reduce the difficulty of the game.</span></p><h3 id='almanac'><span>Almanac</span></h3><p><strong><span>Almanac</span></strong><span> is an in-game item that allows you to read additional information by viewing it after you unlock it.</span></p><p><span>The Almanac includes the evoked ability of the contraptions, as well as the specific data of enemies and the contraptions. You can also see the characters here, as well as a few miscellaneous items.</span></p><h3 id='bosses'><span>Bosses</span></h3><p><strong><span>Bosses</span></strong><span> are the goals of each chapter in Adventure mode. You must defeat the boss to unlock the next chapter.</span></p><p><span>Each boss has great power, which is a big challenge for players. However, they can be easily solved after found their weaknesses.</span></p><h3 id='difficulties'><span>Difficulties</span></h3><p><span>The </span><strong><span>Difficulties</span></strong><span> option is a new system in this game, with different levels of difficulty.</span></p><p><span>There are three difficulties: </span></p><ul><li><strong><span>Easy</span></strong></li><li><strong><span>Normal</span></strong></li><li><strong><span>Hard</span></strong></li></ul><p><span>For the differences between difficulties, see the </span><a href='#DifficultyDifferences'><strong><span>Difficulty Differences</span></strong></a><span> entry.</span></p><hr /><h2 id='faq'><span id="FAQ"><span>FAQ</span></span></h2><p><strong><span>Q: Why don&#39;t you answer me when I ask you a question?</span></strong></p><p><span>A：The creator will only answer questions that do not exist on this page.</span></p><p><span>For those problems that already exist on this page, no anwsers will be left if asked.</span></p><hr /><p><strong><span>Q: How do I change the language?</span></strong></p><p><span>A: </span></p><ol start='' ><li><span>After entering the mainmenu, input the user name and click the button on the left to confirm (确认).</span></li><li><span>Click the wooden sign on the left to open the menu of </span><strong><span>Options</span></strong><span> (选项).</span></li><li><span>Click the button on the bottom left to open </span><strong><span>More options</span></strong><span> (更多选项...).</span></li><li><span>Click on the </span><strong><span>Language</span></strong><span> (语言) drop-down box at the top, and then select the language you want.</span></li><li><span>Click the bottom button &quot;</span><strong><span>Back</span></strong><span>&quot; (返回) to close more options.</span></li><li><span>click the bottom right button &quot;</span><strong><span>Back</span></strong><span>&quot; (返回) to close the options menu.</span></li><li><span>Now you successfully changed the language.</span></li></ol><hr /><p><strong><span>Q: What if there is a BUG?</span></strong></p><p><span>A: You can send an email to the creator&#39;s mailbox: </span><a href='mailto:mvz2feedback@qq.com' target='_blank' class='url'>mvz2feedback@qq.com</a><span>. </span></p><p><span>Please explain the problems you have encountered in the description.</span></p><p><span>A game log file can be included if necessary. the path is %HOMEPATH%/AppData/LocalLow/Tocmic Studio/MinecraftVSZombies2, the files are named Player.log and Player-prev. Log (log file created when you started the game at the last time).</span></p><hr /><p><strong><span>Q: Where&#39;s the path of my save files?</span></strong></p><p><span>A: &quot;%HOMEPATH%/AppData/LocalLow/Tocmic Studio/MinecraftVSZombies2/saves&quot; for Windows,</span></p><p><span>&quot;/storage/emulated/0/Android/data/com.tocmic.mvz2/files/saves&quot; for Android.</span></p><hr /><h2 id='difficulty-differences'><span id="DifficultyDifferences"><span>Difficulty Differences</span></span></h2><h3 id='easy'><span>Easy</span></h3><p><strong><span>General</span></strong></p><ul><li><span>The recharge time of blueprint has been reduced to 80%.</span></li><li><span>A redstone gives 50 points of ME.</span></li><li><span>The spawn rate of starshard zombies has been increased.</span></li><li><span>After clearing a level, only 2 rubies will be given if it&#39;s already cleared, and the remaining carts will be settled as emeralds.</span></li></ul><p><strong><span>Contraptions</span></strong></p><ul><li><span>Moonlight Sensors&#39; yield is doubled.</span></li><li><span>The light radius of contraptions increased by 1 cell length.</span></li><li><span>Triggering contraptions costs 0 ME.</span></li></ul><p><strong><span>Enemies</span></strong></p><ul><li><span>The toughness of Enemies&#39; armors is halfed.</span></li><li><span>Parasitized enemies by Mother Terror will only spawn 2 Parasite Terrors.</span></li></ul><p><strong><span>Bosses</span></strong></p><ul><li><span>Frankenstein will not transform into phase 2.</span></li><li><span>Slenderman will do 3 Fate Choosing at most, and has 4 options.</span></li><li><span>Nightmareaper&#39;s Crushing Walls&#39; speeds are slower.</span></li><li><span>Nightmareaper&#39;s time limit is 2 minutes.</span></li></ul><p><strong><span>Misc</span></strong></p><ul><li><span>The count of ghosts in Whack-A-Ghost Minigame is reduced by 25%.</span></li></ul><h3 id='hard'><span>Hard</span></h3><p><strong><span>General</span></strong></p><ul><li><span>No carts.</span></li><li><span>After clearing a level, a diamond will be given if it&#39;s already cleared, or 5 rubies will be given.</span></li></ul><p><strong><span>Enemies</span></strong></p><ul><li><span>Enemies&#39;s attack damage increased by 50%.</span></li><li><span>The healing and damage of Mummies&#39; gas is doubled.</span></li><li><span>Parasitized enemies by Mother Terror will spawn 4 Parasite Terrors.</span></li><li><span>Mother Terror will spawn 2 Parasite Terrors upon death with eggs.</span></li></ul><p><strong><span>Bosses</span></strong></p><ul><li><span>Frankenstein will transform into phase 2 as soon as it appears.</span></li><li><span>Slenderman will do 5 Fate Choosing at most, and has only 2 options.</span></li><li><span>Slenderman will transform blueprints into zombies, and zombie blueprints will not be transformed.</span></li><li><span>Nightmareaper&#39;s Crushing Walls&#39; speeds are faster.</span></li><li><span>Damage of Nightmareaper&#39;s Wheel of Death is doubled.</span></li><li><span>Nightmareaper&#39;s time limit is 1 minute.</span></li></ul><p><strong><span>Misc</span></strong></p><ul><li><span>The punishment time of whacking Napstablooks is increased to 2s from 1s in Whack-A-Ghost Minigame.</span></li></ul><hr /><h2 id='license'><span>License</span></h2><p><span>The game is a fan game and USES most of the material from other games, so it is not used for for-profit activities.</span></p><p><span>At the same time prohibit anyone to steal the game, or pretend to be the creator, or use the game for profit, Otherwise be at your peril. </span></p><p><span>Because of the creator has not music making experience and cannot make musics, most musics in the game are used from other games. If there were copyright problems of them, please contact the creator in-time. Sorry for the inconvenience.</span></p><hr /><h2 id='credits'><span>Credits</span></h2><p><strong><span>Main Development</span></strong>
+<span>	</span><span>Cuerzor</span></p><p><strong><span>Artist</span></strong>
+<span>	</span><span>Cuerzor</span>
+<span>	</span><span>Some of the textures come from other games.</span></p><p><strong><span>Contraptions Designing</span></strong>
+<span>	</span><span>Cuerzor</span>
+<span>	</span><span>Some ideas come from </span><em><span>Plants vs. Zombies</span></em><span> series.</span></p><p><strong><span>Enemies Designing</span></strong>
+<span>	</span><span>Cuerzor</span>
+<span>	</span><span>Some ideas come from Plants vs. Zombies* series.</span></p><p><strong><span>Bosses Designing</span></strong>
+<span>	</span><span>Cuerzor</span>
+<span>	</span><span>Some ideas come from other games.</span></p><p><strong><span>Level Designing</span></strong>
+<span>	</span><span>Cuerzor</span>
+<span>	</span><span>Some ideas come from other games.</span></p><p><strong><span>Music</span></strong>
+<span>	</span><span>Most musics come from other games.</span></p><p><strong><span>English Localization</span></strong>
+<span>	</span><span>PoRa</span>
+<span>	</span><span>A Random Chinese</span></p><p><strong><span>Test participants</span></strong>
+<span>	</span><span>极寒冰窟文稽盒</span>
+<span>	</span><span>HolyBor</span>
+<span>	</span><span>奕凌</span>
+<span>	</span><span>天盟琉璃</span>
+<span>	</span><span>堕落的太阳</span>
+<span>	</span><span>PoRa</span>
+<span>	</span><span>Hale</span>
+<span>	</span><span>keo Star</span>
+<span>	</span>
+<strong><span>Premium Sponsors</span></strong>
+<span>    BlockFang</span>
+<span>	</span><span>尘埃丶落定</span>
+<span>	</span><span>Jokey</span>
+<span>	</span><span>udhm</span>
+<span>	</span><span>蓝枫呐鸠</span>
+<span>	</span><span>恶魔ED</span>
+<span>	</span><span>mopeaki</span>
+<span>	</span><span>Teggest</span>
+<span>	</span><span>A Random Chinese</span>
+<span>	</span><span>丰聪耳神子</span>
+<span>	</span><span>Star</span>
+<span>	</span><span>何欧破</span>
+<span>	</span><span>Xayj</span>
+<span>	</span><span>实现愿望的枫叶</span>
+<span>	</span><span>brokenpoems</span>
+<span>	</span><span>KUMU_KEEP</span>
+<span>	</span><span>mcgzjer</span>
+<span>	</span><span>Nightmare夜魔</span>
+<span>	</span><span>imctmc_</span></p><p><strong><span>Special Thanks</span></strong>
+<span>	</span><span>All friends who support this game.</span></p><hr /><h2 id='upcoming-features'><span>Upcoming Features</span></h2><hr /><h2 id='change-log'><span>Change Log</span></h2><h3 id='025'><span>0.2.5</span></h3><p><strong><span>Bug Fixed</span></strong></p><ul><li><span>Fixed an issue that particles still exist after some entities was destroyed.</span></li></ul><hr /><h3 id='024'><span>0.2.4</span></h3><p><strong><span>Bug Fixed</span></strong></p><ul><li><span>Fixed an issue that the effect of &quot;Pandora&#39;s Box&quot; of Slenderman changed into &quot;clear all contraptions&quot;.</span></li><li><span>Fixed an issue that would occur an error if a contraption was destroyed when a spider is climbing the contraption.</span></li><li><span>Fixed an issue that map view moving and scaling don&#39;t work properly on mobile.</span></li><li><span>Fixed an issue that you can open settings menu while doing transitions in Nightmare battle.</span></li><li><span>Fixed an issue that dialogs after Dream World Day 10 will not be triggered.</span></li></ul><hr /><h3 id='023'><span>0.2.3</span></h3><p><strong><span>Modified</span></strong></p><ul><li><span>Projectiles go vertically up or down now knockback enemies to the right by default.</span></li><li><span>Bone Walls now will not be stunned.</span></li><li><span>Now, after other fingers touch the screen, they will also trigger the swing of the sword, but the position of the sword will keep at the first finger.</span></li></ul><p><strong><span>Bug Fixed</span></strong></p><ul><li><span>Fixed an issue that instantly kill Mother Terrors as soon as they was spawned will spawn Parasite Terrors on the leftest.</span></li><li><span>Fixed an issue that Frankenstein will restore from faint immediately after being hurt by high-pressure TNT during punching.</span></li><li><span>Fixed an issue that enemies in preview stage will also realign to their lanes.</span></li><li><span>Fixed an issue that would occur errors when entering the store and returning when choosing blueprints.</span></li><li><span>Fixed an issue that enemies on Gravity Pads will still be slowed after Gravity Pad was disabled.</span></li></ul><hr /><h3 id='022'><span>0.2.2</span></h3><p><strong><span>Modified</span></strong></p><ul><li><span>Force Pad will now change the direction of projectiles, instead of warp their lanes.</span></li></ul><p><strong><span>Bug Fixed</span></strong></p><ul><li><span>Fixed an issue that particles created by crushing contraption by statues will continue playing without stop.</span></li><li><span>Fixed an issue that when an enemy stops at a Mine TNT, the Mine TNT will not be triggered.</span></li><li><span>Fixed an issue that board in Breakout minigame will fall down and sink into water.</span></li><li><span>Fixed an issue that caused the cursor to permanently change to the moving cursor after clicks buttons when moving the view of map.</span></li><li><span>Fixed an issue that caused the mouse to become target when the Force Pad was destroyed when the Force Pad was evoked.</span></li><li><span>Fixed an issue that cannot click enemies to view them in Almanac when choosing blueprints.</span></li><li><span>Fixed an issue that items will not appear immediately after entering the store and buy items when choosing blueprints.</span></li><li><span>Fixed an issue that you can use dream silk on enemy contraptions.</span></li></ul><hr /><h3 id='021'><span>0.2.1</span></h3><p><strong><span>Modified</span></strong></p><ul><li><span>Modified the path shape of entities warping lanes by Force Pad.</span></li></ul><p><strong><span>Bug Fixed</span></strong></p><ul><li><span>Fixed an issue that Doremy will be ordered before Orant in Almanac.</span></li><li><span>Fixed an issue that contraptions damage by explosions will take damage again when another explosion created.</span></li><li><span>Reduced the height of spice gas, now they can be normally ignited by fire, and can damage low-height contraptions.</span></li><li><span>Fixed an issue that Hell Metal event triggered by Random China will equip leather caps for enemies instead of iron helmets.</span></li></ul><hr /><h3 id='020'><span>0.2.0</span></h3><p><strong><span>Added</span></strong></p><ul><li><p><span>The whole dream world! Including 10 new contraptions, 5 new enemies and 1 boss!</span></p></li><li><p><span>A new way to instantly trigger contraptions.</span></p><ul><li><span>If you place a triggerable contraption normally, it will not be triggered and needs to be triggered manually.</span></li><li><span>If you pick up the trigger gear, triggerable contraption blueprints will start twinkling. Then click a contraption blueprint, the cursor will become this contraption and there is a gear icon at the left-top. If you place this contraption, it will be instantly triggered.</span></li><li><span>These operations can be swapped by the option &quot;Swap Trigger&quot;.</span></li><li><span>These has been added into the triggering tutorial of 1-7.</span></li></ul></li><li><p><span>The external location of language files. This means that players can modify the language texts, textures and even add a language.</span></p></li></ul><p><strong><span>Modified</span></strong></p><ul><li><p><span>Soul Furnaces are modified a lot:</span></p><ul><li><span>Capacity: </span>
+<span>	</span><span>Burning for 60 seconds, does not consume fuel upon shoots</span>
+<span>To</span>
+<span>	</span><span>Can shoot 60 shots, only consume fuel upon shoots</span></li><li><span>Fuel supply formula: </span>
+<span>	</span><span>Sacrificed Contraption Cost / 3 * Recharge Multiplier (1 for Short; 3 for Long; 6 for Very Long) + 10</span>
+<span>To</span>
+<span>Sacrificed Contraption Cost / 6 * Recharge Multiplier (1 for Short; 3 for Long; 6 for Very Long) + 5</span></li></ul></li><li><p><span>Modified the minimum aspect of screen to 8:5 in Android Version.</span></p></li><li><p><span>Changed the version of user save files to 1.</span></p></li><li><p><span>Enemies with same team will no longer generate useless collisions, greatly increased the performance when lots of enemies appears.</span></p></li><li><p><span>Leather Hat Zombie now is called Leather Cap Zombie.</span></p></li></ul><p><strong><span>Bug Fixed</span></strong></p><ul><li><span>Fixed an issue that if you clear 1-1 to 1-5 without reloading your save file, Orant will not appear in Almanac.</span></li><li><span>Fixed an issue that the Vibration setting will be reset to on after you restart the game.</span></li><li><span>Fixed an issue that contraption entry buttons in Almanac fills in the first line.</span></li><li><span>Fixed an issue that Frankenstein will sometimes stop shooting after destorying his target.</span></li></ul><h3 id='012'><span>0.1.2</span></h3><p><strong><span>Bug Fixed</span></strong></p><ul><li><strong><span>Fixed an issue that saving the level in Endless Mode after each 2 flags is completed will cause this saving fails.</span></strong></li><li><span>Fixed an issue that the data of moonlight sensors&#39; particles and soulfire trails will not be saved.</span></li><li><span>Fixed an issue that skeleton entry button in Almanac fills in the first line.</span></li><li><span>Fixed an issue that you can still open Menu Dialog using Escape or Back button while the characters appear after you cleared a level.</span></li></ul><h3 id='011'><span>0.1.1</span></h3><p><strong><span>Added</span></strong></p><ul><li><span>You can intialize your prefered language after entering the game!</span></li><li><span>Game version now will be shown in the mainmenu.</span></li><li><span>Changelog in Readme, and the upcoming features! Yeah you are reading one of them!</span></li><li><span>The game version will now be displayed at the right-top of mainmenu.</span></li></ul><p><strong><span>Modified</span></strong></p><ul><li><span>Modified the lighting effects, and it can display a faint light even during the daytime.</span></li><li><span>Modified the effect of evoked moonlight sensors, now it will emit stars instead of a blue halo.</span></li></ul><p><strong><span>Known Issues</span></strong></p><ul><li><ul><li><p><span>Level saving sometimes will be failed, causing save files empty and will occur an issue after entering this level.</span></p><ul><li><span>A detector of this issue has been added into the game, and will display an error message box for the player. If you see that, please send the log files to the creator.(See </span><a href='#span-idfaqfaqspan'><span>FAQ</span></a><span>)</span></li></ul></li></ul></li></ul><p><strong><span>Bug Fixed</span></strong></p><ul><li><span>Fixed an issue that if a bone wall is destroyed by a Mine TNT, its bone particles will not be stopped.</span></li><li><span>Fixed an issue that you can still pick the pickaxe or starshard up even while they are invisible.</span></li><li><span>Fixed an issue that furnaces will not turn to white when they are going to produce, and will become white after being pointed with pickaxe or starshards.</span></li><li><span>Fixed an issue that carts will still start their engines if they touched even dead enemies.</span></li><li><span>Fixed an issue that the sword will be paralyzed forever if hit Napstablook ran away from the screen in Whack-A-Ghost Minigame.</span></li><li><span>Fixed an issue that enemies will have wrong positions after they entering your house in halloween.</span></li><li><span>Fixed an issue that you can no longer purchase the 7th contraption slot aftered you cleared 1-7.</span></li><li><span>Fixed an issue that resource loading fails if the number format of operation system&#39;s culture is different from english (like Russian).</span></li></ul><h3 id='010'><span>0.1.0</span></h3><p><strong><span>Added</span></strong></p><ul><li><span>The whole Chapter 1!</span></li><li><span>Ghosts, mummies and necromancers!</span></li><li><span>Almanac!</span></li><li><span>You can open Almanac in-level!</span></li><li><span>The saving and loading of level progress!</span></li><li><span>Options of Fullscreen, Difficuties, Volumes, Languages and Particle Counts!</span></li><li><span>The shortcuts of contraptions!</span></li><li><span>Different texts after different enemies entered your house...?</span></li><li><span>Tooltips for contraptions!</span></li></ul><p><strong><span>Modified</span></strong></p><ul><li><span>The screen will be lit after gargoyles are revived now.</span></li><li><span>Moved the resource loading to the titlescreen.</span></li><li><span>Reduced the frequency of enemy crying.</span></li></ul><p><strong><span>Bug Fixed</span></strong></p><ul><li><span>Fixed an issue that UI images like &quot;A huge wave of...&quot;, &quot;final wave&quot;, or the pointing arrow still work while the game is paused.</span></li><li><span>Fixed an issue that if you traveled into a scene which will play the traveling sound such as the map, the sound will be played twice. </span></li><li><span>Fixed an issue that sometimes UI will be blocked by the advice box and cannot be interacted.</span></li><li><span>Fixed an issue that inputting colored Unicode characters for user name will be recorded, but cannot display normally.</span></li><li><span>Fixed an issue that Iron Helmet Zombies will not appear in prologue.</span></li><li><span>Fixed an issue that the resolution does not fit the window size.</span></li></ul><h3 id='004'><span>0.0.4</span></h3><p><strong><span>Added</span></strong></p><ul><li><span>Halloween Day 2.</span></li><li><span>Skeletons! Statues! Gargoyles!</span></li><li><span>All evocations of contraptions!</span></li></ul><p><strong><span>Modified</span></strong></p><ul><li><span>Moved the pickaxe to the right-bottom of the screen in Android Edition.</span></li></ul><p><strong><span>Bug Fixed</span></strong></p><ul><li><span>Fixed an issue that you can place contraptions while the game is paused.</span></li></ul><h3 id='003'><span>0.0.3</span></h3><p><strong><span>Added</span></strong></p><ul><li><span>Halloween Map and Day 1. (Though Day 1 cannot be finished.)</span></li><li><span>Menu Button.</span></li><li><span>Custom Cursors.</span></li><li><span>Expandable resolutions.</span></li></ul><p><strong><span>Modified</span></strong></p><ul><li><span>Flag Zombies now always walk in the frontest.</span></li><li><span>Modified the textures of houses.</span></li><li><span>A buzzer sound will be played after clicking a disabled blueprint.</span></li></ul><p><strong><span>Bug Fixed</span></strong></p><ul><li><span>Fixed an issue that particles will not be stopped after contraptions are destroyed and pause then resume the game.</span></li></ul></div></div>
+</body>
+</html>
